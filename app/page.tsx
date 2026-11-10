@@ -5,7 +5,7 @@ import { supabase, supabaseReady } from "@/lib/supabase";
 import {
   AudioLines, Search, Home, Compass, Library, Heart, Plus, Play, Pause,
   SkipBack, SkipForward, Volume2, Music2, Menu, X, LogIn, LogOut, UserRound,
-  Disc3, ListMusic, Loader2, Trash2
+  Disc3, ListMusic, Loader2
 } from "lucide-react";
 
 type Track = {
