@@ -1,0 +1,33 @@
+name: SONARA Preview build
+
+on:
+  push:
+    branches:
+      - feat/sonara-web-preview
+  pull_request:
+    branches:
+      - feat/sonara-web-preview
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sonara-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build Cloudflare Preview bundle
+        run: npm run build:cloudflare
